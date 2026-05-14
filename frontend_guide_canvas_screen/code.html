@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DesignDB | ERD Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#000000",
+                    "primary-container": "#00e3fd",
+                    "primary-fixed-dim": "#00d4ec",
+                    "on-error-container": "#ffa8a3",
+                    "secondary-container": "#054792",
+                    "secondary-dim": "#719eee",
+                    "on-primary-fixed": "#003840",
+                    "surface-tint": "#81ecff",
+                    "primary": "#81ecff",
+                    "inverse-on-surface": "#495763",
+                    "on-primary": "#005762",
+                    "tertiary": "#a68cff",
+                    "inverse-primary": "#006976",
+                    "on-primary-fixed-variant": "#005762",
+                    "on-surface-variant": "#9fadbb",
+                    "tertiary-dim": "#7e51ff",
+                    "secondary-fixed": "#bdd2ff",
+                    "tertiary-fixed": "#b8a3ff",
+                    "on-secondary": "#002b5e",
+                    "on-tertiary": "#25006b",
+                    "surface-container-low": "#051520",
+                    "surface-dim": "#030f1a",
+                    "on-tertiary-container": "#ffffff",
+                    "on-surface": "#deedfc",
+                    "tertiary-container": "#7c4dff",
+                    "error": "#ff716c",
+                    "tertiary-fixed-dim": "#ab93ff",
+                    "on-secondary-container": "#c0d4ff",
+                    "secondary-fixed-dim": "#a7c4ff",
+                    "on-secondary-fixed-variant": "#164f9a",
+                    "on-primary-container": "#004d57",
+                    "on-tertiary-fixed": "#1c0055",
+                    "outline-variant": "#3c4955",
+                    "surface-container-high": "#0e212f",
+                    "outline": "#697784",
+                    "surface-container-highest": "#132836",
+                    "on-tertiary-fixed-variant": "#4000ad",
+                    "error-dim": "#d7383b",
+                    "inverse-surface": "#f6f9ff",
+                    "on-secondary-fixed": "#00336d",
+                    "primary-dim": "#00d4ec",
+                    "surface-variant": "#132836",
+                    "surface-bright": "#182e3e",
+                    "on-error": "#490006",
+                    "surface-container": "#091b28",
+                    "secondary": "#7eabfc",
+                    "surface": "#030f1a",
+                    "primary-fixed": "#00e3fd",
+                    "error-container": "#9f0519",
+                    "on-background": "#deedfc",
+                    "background": "#030f1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Inter"],
+                    "mono": ["JetBrains Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .vanta-bg {
+            background: radial-gradient(circle at 50% 50%, #051520 0%, #030f1a 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .vanta-fog {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+        .canvas-grid {
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #ffffff05 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<div class="vanta-bg"></div>
+<div class="vanta-fog"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-surface/60 backdrop-blur-xl shadow-[0_0_24px_rgba(0,229,255,0.06)]">
+<div class="flex items-center gap-8">
+<span class="font-['Space_Grotesk'] text-2xl font-bold text-white tracking-tighter">DesignDB</span>
+<nav class="flex items-center gap-2">
+<button class="p-2 text-slate-400 hover:bg-white/5 transition-colors rounded-lg">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 transition-colors rounded-lg">
+<span class="material-symbols-outlined">table_view</span>
+</button>
+<button class="p-2 text-cyan-400 border-b-2 border-cyan-400 transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-white/5 p-1 rounded-lg">
+<button class="p-2 text-cyan-400 hover:bg-white/5 transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 transition-transform scale-95 active:scale-90">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="relative h-screen pt-16 pr-64 flex flex-col">
+<!-- Center Canvas -->
+<div class="flex-grow relative canvas-grid overflow-hidden">
+<!-- Table Node: Users -->
+<div class="absolute top-24 left-32 w-64 bg-surface-bright/60 backdrop-blur-xl rounded-xl border border-outline-variant/20 shadow-2xl p-4 cursor-move">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">table</span>
+<span class="font-headline font-bold text-sm tracking-wide">Users</span>
+</div>
+<div class="w-4 h-1 bg-outline-variant/40 rounded-full"></div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">key</span>
+<span class="text-on-surface-variant font-mono">id</span>
+</div>
+<span class="text-primary-fixed-dim/70">uuid</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline scale-75">text_fields</span>
+<span class="text-on-surface-variant font-mono">email</span>
+</div>
+<span class="text-outline">varchar</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline scale-75">text_fields</span>
+<span class="text-on-surface-variant font-mono">full_name</span>
+</div>
+<span class="text-outline">varchar</span>
+</div>
+</div>
+</div>
+<!-- Table Node: Orders -->
+<div class="absolute top-64 left-[420px] w-64 bg-surface-bright/60 backdrop-blur-xl rounded-xl border border-outline-variant/20 shadow-2xl p-4 cursor-move">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="font-headline font-bold text-sm tracking-wide">Orders</span>
+</div>
+<div class="w-4 h-1 bg-outline-variant/40 rounded-full"></div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary scale-75">key</span>
+<span class="text-on-surface-variant font-mono">id</span>
+</div>
+<span class="text-primary-fixed-dim/70">uuid</span>
+</div>
+<div class="flex items-center justify-between text-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary scale-75">link</span>
+<span class="text-on-surface-variant font-mono">user_id</span>
+</div>
+<span class="text-secondary">uuid</span>
+</div>
+</div>
+</div>
+<!-- SVG Connections -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none">
+<defs>
+<lineargradient id="flow-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="var(--tw-primary)" stop-opacity="0.2"></stop>
+<stop offset="50%" stop-color="#00e3fd" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="var(--tw-primary)" stop-opacity="0.2"></stop>
+</lineargradient>
+</defs>
+<!-- Line between Users and Orders -->
+<path d="M 384 150 L 420 280" fill="none" stroke="url(#flow-grad)" stroke-dasharray="4 2" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- BottomNavBar (The split horizontal section) -->
+<footer class="fixed bottom-0 left-0 w-[calc(100%-16rem)] z-50 flex h-64 px-4 py-4 gap-4 bg-black/40 backdrop-blur-md border-t border-white/10">
+<!-- Left: SQL Code -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest/40 rounded-xl overflow-hidden">
+<div class="flex items-center justify-between px-4 py-2 bg-white/5">
+<div class="flex items-center gap-2 bg-cyan-500/20 text-cyan-300 rounded-lg px-3 py-1">
+<span class="material-symbols-outlined text-sm">code</span>
+<span class="font-['JetBrains_Mono'] text-xs">SQL Code</span>
+</div>
+<span class="text-[10px] text-outline-variant font-mono uppercase tracking-widest">Read Only</span>
+</div>
+<div class="p-4 font-mono text-[11px] leading-relaxed text-cyan-400/80">
+<pre><code>CREATE TABLE users (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  full_name VARCHAR(100),
+  created_at TIMESTAMP DEFAULT NOW()
+);
+
+CREATE TABLE orders (
+  id UUID PRIMARY KEY,
+  user_id UUID REFERENCES users(id),
+  total DECIMAL(10,2),
+  status VARCHAR(20)
+);</code></pre>
+</div>
+</div>
+<!-- Right: Debug / Validation -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest/40 rounded-xl overflow-hidden">
+<div class="flex items-center justify-between px-4 py-2 bg-white/5">
+<div class="flex items-center gap-2 text-slate-500 px-3 py-1">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span class="font-['JetBrains_Mono'] text-xs">Debug / Validation</span>
+</div>
+</div>
+<div class="p-4 font-mono text-[11px] space-y-1">
+<div class="flex gap-3">
+<span class="text-outline-variant">14:22:49:720</span>
+<span class="text-tertiary">SYSTEM</span>
+<span class="text-on-surface-variant">Debug running...</span>
+</div>
+<div class="flex gap-3">
+<span class="text-outline-variant">14:22:50:112</span>
+<span class="text-primary-dim">VALIDATOR</span>
+<span class="text-on-surface-variant">Scanning normalization paths...</span>
+</div>
+<div class="flex gap-3">
+<span class="text-outline-variant">14:22:50:455</span>
+<span class="text-secondary">LINKER</span>
+<span class="text-on-surface-variant">Table 'Orders' successfully linked to 'Users' via user_id.</span>
+</div>
+<div class="flex gap-3">
+<span class="text-outline-variant">14:23:01:002</span>
+<span class="text-error">WARN</span>
+<span class="text-on-surface-variant">Missing index on Users(email).</span>
+</div>
+</div>
+</div>
+</footer>
+</main>
+<!-- SideNavBar (Right) -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-4rem)] z-40 flex flex-col w-64 bg-surface-container-low/60 backdrop-blur-xl transition-all duration-300 ease-in-out">
+<div class="p-6 border-b border-outline-variant/10">
+<div class="flex items-center justify-between mb-2">
+<span class="text-cyan-400 font-bold font-headline text-lg">Components</span>
+<button class="text-slate-500 hover:text-cyan-300 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<p class="text-slate-500 font-['Inter'] text-xs antialiased uppercase tracking-widest">Node Library</p>
+</div>
+<nav class="flex-grow py-4">
+<div class="px-3 mb-6">
+<p class="px-3 mb-3 text-[10px] text-outline font-bold uppercase tracking-widest">Creation</p>
+<div class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 text-white border-r-4 border-cyan-400 bg-cyan-400/10 transition-all font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined scale-90">input</span>
+<span>Inputs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-cyan-300 hover:bg-white/5 transition-all font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined scale-90">transform</span>
+<span>Transform</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-cyan-300 hover:bg-white/5 transition-all font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined scale-90">database</span>
+<span>Database</span>
+</a>
+</div>
+</div>
+<div class="px-3">
+<p class="px-3 mb-3 text-[10px] text-outline font-bold uppercase tracking-widest">Visuals</p>
+<a class="flex items-center gap-3 px-4 py-2.5 text-slate-500 hover:text-cyan-300 hover:bg-white/5 transition-all font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined scale-90">palette</span>
+<span>Styles</span>
+</a>
+<div class="px-4 mt-4 space-y-4">
+<div>
+<label class="text-[10px] text-outline block mb-2 uppercase">Typography</label>
+<div class="flex items-center justify-between bg-white/5 p-2 rounded-lg cursor-pointer hover:bg-white/10 transition-colors">
+<span class="text-xs font-mono">Inter Regular</span>
+<span class="material-symbols-outlined text-xs">unfold_more</span>
+</div>
+</div>
+<div>
+<label class="text-[10px] text-outline block mb-2 uppercase">Table Theme</label>
+<div class="grid grid-cols-4 gap-2">
+<div class="h-6 w-6 rounded bg-primary-container cursor-pointer ring-1 ring-white/20"></div>
+<div class="h-6 w-6 rounded bg-secondary cursor-pointer hover:scale-105 transition-transform"></div>
+<div class="h-6 w-6 rounded bg-tertiary cursor-pointer hover:scale-105 transition-transform"></div>
+<div class="h-6 w-6 rounded bg-surface-bright cursor-pointer hover:scale-105 transition-transform"></div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="p-4 border-t border-outline-variant/10">
+<button class="flex items-center gap-3 w-full px-4 py-2.5 text-slate-500 hover:text-cyan-300 transition-colors text-sm">
+<span class="material-symbols-outlined scale-90">settings</span>
+<span>Settings</span>
+</button>
+</div>
+</aside>
+<!-- Draggable Handles Decor -->
+<div class="fixed top-20 right-[260px] h-3 w-1 bg-outline-variant/20 rounded-full cursor-col-resize hover:bg-cyan-400 transition-colors"></div>
+<div class="fixed bottom-[260px] left-1/2 -translate-x-1/2 w-8 h-1 bg-outline-variant/20 rounded-full cursor-row-resize hover:bg-cyan-400 transition-colors"></div>
+</body></html>
