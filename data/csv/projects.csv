@@ -1,0 +1,81 @@
+project_id,user_id,title,description,is_public,created_at,updated_at
+1,1,Library Management System,"Manages patients, doctors, appointments, prescriptions",0,2024-01-14 00:00:00,2024-01-24 00:00:00
+2,2,Hospital Records DB,"Handles products, orders, customers, and payments",0,2024-01-17 00:00:00,2024-01-27 00:00:00
+3,3,E-Commerce Platform,"Covers students, teachers, courses, grades",0,2024-01-20 00:00:00,2024-01-30 00:00:00
+4,4,School ERP,"Monitors stock levels, suppliers, warehouses",1,2024-01-23 00:00:00,2024-02-02 00:00:00
+5,5,Inventory Tracker,"Payroll, employees, departments, leaves",0,2024-01-26 00:00:00,2024-02-05 00:00:00
+6,6,HR Management,"Contacts, deals, pipelines, activities",0,2024-01-29 00:00:00,2024-02-08 00:00:00
+7,7,CRM System,"Posts, tags, authors, comments",0,2024-02-01 00:00:00,2024-02-11 00:00:00
+8,8,Blog Engine,"Items, bids, users, auctions",1,2024-02-04 00:00:00,2024-02-14 00:00:00
+9,9,Auction Platform,"Flights, passengers, bookings, seats",0,2024-02-07 00:00:00,2024-02-17 00:00:00
+10,10,Flight Booking DB,"Tracks books, authors, members, and loans",0,2024-02-10 00:00:00,2024-02-20 00:00:00
+11,11,Banking System,"Manages patients, doctors, appointments, prescriptions",0,2024-02-13 00:00:00,2024-02-23 00:00:00
+12,12,Social Network Schema,"Handles products, orders, customers, and payments",1,2024-02-16 00:00:00,2024-02-26 00:00:00
+13,13,Food Delivery App,"Covers students, teachers, courses, grades",0,2024-02-19 00:00:00,2024-02-29 00:00:00
+14,14,Real Estate DB,"Monitors stock levels, suppliers, warehouses",0,2024-02-22 00:00:00,2024-03-03 00:00:00
+15,15,Streaming Service,"Payroll, employees, departments, leaves",0,2024-02-25 00:00:00,2024-03-06 00:00:00
+16,16,Gym Management,"Contacts, deals, pipelines, activities",1,2024-02-28 00:00:00,2024-03-09 00:00:00
+17,17,Event Planner,"Posts, tags, authors, comments",0,2024-03-02 00:00:00,2024-03-12 00:00:00
+18,18,Pharmacy DB,"Items, bids, users, auctions",0,2024-03-05 00:00:00,2024-03-15 00:00:00
+19,19,University Portal,"Flights, passengers, bookings, seats",0,2024-03-08 00:00:00,2024-03-18 00:00:00
+20,20,Logistics Tracker,"Tracks books, authors, members, and loans",1,2024-03-11 00:00:00,2024-03-21 00:00:00
+21,21,Library Management System,"Manages patients, doctors, appointments, prescriptions",0,2024-03-14 00:00:00,2024-03-24 00:00:00
+22,22,Hospital Records DB,"Handles products, orders, customers, and payments",0,2024-03-17 00:00:00,2024-03-27 00:00:00
+23,23,E-Commerce Platform,"Covers students, teachers, courses, grades",0,2024-03-20 00:00:00,2024-03-30 00:00:00
+24,24,School ERP,"Monitors stock levels, suppliers, warehouses",1,2024-03-23 00:00:00,2024-04-02 00:00:00
+25,25,Inventory Tracker,"Payroll, employees, departments, leaves",0,2024-03-26 00:00:00,2024-04-05 00:00:00
+26,26,HR Management,"Contacts, deals, pipelines, activities",0,2024-03-29 00:00:00,2024-04-08 00:00:00
+27,27,CRM System,"Posts, tags, authors, comments",0,2024-04-01 00:00:00,2024-04-11 00:00:00
+28,28,Blog Engine,"Items, bids, users, auctions",1,2024-04-04 00:00:00,2024-04-14 00:00:00
+29,29,Auction Platform,"Flights, passengers, bookings, seats",0,2024-04-07 00:00:00,2024-04-17 00:00:00
+30,30,Flight Booking DB,"Tracks books, authors, members, and loans",0,2024-04-10 00:00:00,2024-04-20 00:00:00
+31,31,Banking System,"Manages patients, doctors, appointments, prescriptions",0,2024-04-13 00:00:00,2024-04-23 00:00:00
+32,32,Social Network Schema,"Handles products, orders, customers, and payments",1,2024-04-16 00:00:00,2024-04-26 00:00:00
+33,33,Food Delivery App,"Covers students, teachers, courses, grades",0,2024-04-19 00:00:00,2024-04-29 00:00:00
+34,34,Real Estate DB,"Monitors stock levels, suppliers, warehouses",0,2024-04-22 00:00:00,2024-05-02 00:00:00
+35,35,Streaming Service,"Payroll, employees, departments, leaves",0,2024-04-25 00:00:00,2024-05-05 00:00:00
+36,36,Gym Management,"Contacts, deals, pipelines, activities",1,2024-04-28 00:00:00,2024-05-08 00:00:00
+37,37,Event Planner,"Posts, tags, authors, comments",0,2024-05-01 00:00:00,2024-05-11 00:00:00
+38,38,Pharmacy DB,"Items, bids, users, auctions",0,2024-05-04 00:00:00,2024-05-14 00:00:00
+39,39,University Portal,"Flights, passengers, bookings, seats",0,2024-05-07 00:00:00,2024-05-17 00:00:00
+40,40,Logistics Tracker,"Tracks books, authors, members, and loans",1,2024-05-10 00:00:00,2024-05-20 00:00:00
+41,41,Library Management System,"Manages patients, doctors, appointments, prescriptions",0,2024-05-13 00:00:00,2024-05-23 00:00:00
+42,42,Hospital Records DB,"Handles products, orders, customers, and payments",0,2024-05-16 00:00:00,2024-05-26 00:00:00
+43,43,E-Commerce Platform,"Covers students, teachers, courses, grades",0,2024-05-19 00:00:00,2024-05-29 00:00:00
+44,44,School ERP,"Monitors stock levels, suppliers, warehouses",1,2024-05-22 00:00:00,2024-06-01 00:00:00
+45,45,Inventory Tracker,"Payroll, employees, departments, leaves",0,2024-05-25 00:00:00,2024-06-04 00:00:00
+46,46,HR Management,"Contacts, deals, pipelines, activities",0,2024-05-28 00:00:00,2024-06-07 00:00:00
+47,47,CRM System,"Posts, tags, authors, comments",0,2024-05-31 00:00:00,2024-06-10 00:00:00
+48,48,Blog Engine,"Items, bids, users, auctions",1,2024-06-03 00:00:00,2024-06-13 00:00:00
+49,49,Auction Platform,"Flights, passengers, bookings, seats",0,2024-06-06 00:00:00,2024-06-16 00:00:00
+50,50,Flight Booking DB,"Tracks books, authors, members, and loans",0,2024-06-09 00:00:00,2024-06-19 00:00:00
+51,51,Banking System,"Manages patients, doctors, appointments, prescriptions",0,2024-06-12 00:00:00,2024-06-22 00:00:00
+52,52,Social Network Schema,"Handles products, orders, customers, and payments",1,2024-06-15 00:00:00,2024-06-25 00:00:00
+53,53,Food Delivery App,"Covers students, teachers, courses, grades",0,2024-06-18 00:00:00,2024-06-28 00:00:00
+54,54,Real Estate DB,"Monitors stock levels, suppliers, warehouses",0,2024-06-21 00:00:00,2024-07-01 00:00:00
+55,55,Streaming Service,"Payroll, employees, departments, leaves",0,2024-06-24 00:00:00,2024-07-04 00:00:00
+56,56,Gym Management,"Contacts, deals, pipelines, activities",1,2024-06-27 00:00:00,2024-07-07 00:00:00
+57,57,Event Planner,"Posts, tags, authors, comments",0,2024-06-30 00:00:00,2024-07-10 00:00:00
+58,58,Pharmacy DB,"Items, bids, users, auctions",0,2024-07-03 00:00:00,2024-07-13 00:00:00
+59,59,University Portal,"Flights, passengers, bookings, seats",0,2024-07-06 00:00:00,2024-07-16 00:00:00
+60,60,Logistics Tracker,"Tracks books, authors, members, and loans",1,2024-07-09 00:00:00,2024-07-19 00:00:00
+61,1,Library Management System,"Manages patients, doctors, appointments, prescriptions",0,2024-07-12 00:00:00,2024-07-22 00:00:00
+62,2,Hospital Records DB,"Handles products, orders, customers, and payments",0,2024-07-15 00:00:00,2024-07-25 00:00:00
+63,3,E-Commerce Platform,"Covers students, teachers, courses, grades",0,2024-07-18 00:00:00,2024-07-28 00:00:00
+64,4,School ERP,"Monitors stock levels, suppliers, warehouses",1,2024-07-21 00:00:00,2024-07-31 00:00:00
+65,5,Inventory Tracker,"Payroll, employees, departments, leaves",0,2024-07-24 00:00:00,2024-08-03 00:00:00
+66,6,HR Management,"Contacts, deals, pipelines, activities",0,2024-07-27 00:00:00,2024-08-06 00:00:00
+67,7,CRM System,"Posts, tags, authors, comments",0,2024-07-30 00:00:00,2024-08-09 00:00:00
+68,8,Blog Engine,"Items, bids, users, auctions",1,2024-08-02 00:00:00,2024-08-12 00:00:00
+69,9,Auction Platform,"Flights, passengers, bookings, seats",0,2024-08-05 00:00:00,2024-08-15 00:00:00
+70,10,Flight Booking DB,"Tracks books, authors, members, and loans",0,2024-08-08 00:00:00,2024-08-18 00:00:00
+71,11,Banking System,"Manages patients, doctors, appointments, prescriptions",0,2024-08-11 00:00:00,2024-08-21 00:00:00
+72,12,Social Network Schema,"Handles products, orders, customers, and payments",1,2024-08-14 00:00:00,2024-08-24 00:00:00
+73,13,Food Delivery App,"Covers students, teachers, courses, grades",0,2024-08-17 00:00:00,2024-08-27 00:00:00
+74,14,Real Estate DB,"Monitors stock levels, suppliers, warehouses",0,2024-08-20 00:00:00,2024-08-30 00:00:00
+75,15,Streaming Service,"Payroll, employees, departments, leaves",0,2024-08-23 00:00:00,2024-09-02 00:00:00
+76,16,Gym Management,"Contacts, deals, pipelines, activities",1,2024-08-26 00:00:00,2024-09-05 00:00:00
+77,17,Event Planner,"Posts, tags, authors, comments",0,2024-08-29 00:00:00,2024-09-08 00:00:00
+78,18,Pharmacy DB,"Items, bids, users, auctions",0,2024-09-01 00:00:00,2024-09-11 00:00:00
+79,19,University Portal,"Flights, passengers, bookings, seats",0,2024-09-04 00:00:00,2024-09-14 00:00:00
+80,20,Logistics Tracker,"Tracks books, authors, members, and loans",1,2024-09-07 00:00:00,2024-09-17 00:00:00

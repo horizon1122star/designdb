@@ -1,0 +1,71 @@
+relationship_id,schema_id,from_entity_id,to_entity_id,rel_type,foreign_key,referenced_key,on_delete,on_update
+1,1,1,2,one-to-one,product_id,product_id,RESTRICT,SET NULL
+2,2,2,3,one-to-many,order_id,order_id,SET NULL,NO ACTION
+3,3,3,4,many-to-one,customer_id,customer_id,NO ACTION,CASCADE
+4,4,4,5,many-to-many,category_id,category_id,CASCADE,RESTRICT
+5,5,5,6,one-to-one,employee_id,employee_id,RESTRICT,SET NULL
+6,6,6,7,one-to-many,department_id,department_id,SET NULL,NO ACTION
+7,7,7,8,many-to-one,invoice_id,invoice_id,NO ACTION,CASCADE
+8,8,8,9,many-to-many,supplier_id,supplier_id,CASCADE,RESTRICT
+9,9,9,10,one-to-one,branch_id,branch_id,RESTRICT,SET NULL
+10,10,10,11,one-to-many,user_id,user_id,SET NULL,NO ACTION
+11,11,11,12,many-to-one,product_id,product_id,NO ACTION,CASCADE
+12,12,12,13,many-to-many,order_id,order_id,CASCADE,RESTRICT
+13,13,13,14,one-to-one,customer_id,customer_id,RESTRICT,SET NULL
+14,14,14,15,one-to-many,category_id,category_id,SET NULL,NO ACTION
+15,15,15,16,many-to-one,employee_id,employee_id,NO ACTION,CASCADE
+16,16,16,17,many-to-many,department_id,department_id,CASCADE,RESTRICT
+17,17,17,18,one-to-one,invoice_id,invoice_id,RESTRICT,SET NULL
+18,18,18,19,one-to-many,supplier_id,supplier_id,SET NULL,NO ACTION
+19,19,19,20,many-to-one,branch_id,branch_id,NO ACTION,CASCADE
+20,20,20,21,many-to-many,user_id,user_id,CASCADE,RESTRICT
+21,21,21,22,one-to-one,product_id,product_id,RESTRICT,SET NULL
+22,22,22,23,one-to-many,order_id,order_id,SET NULL,NO ACTION
+23,23,23,24,many-to-one,customer_id,customer_id,NO ACTION,CASCADE
+24,24,24,25,many-to-many,category_id,category_id,CASCADE,RESTRICT
+25,25,25,26,one-to-one,employee_id,employee_id,RESTRICT,SET NULL
+26,26,26,27,one-to-many,department_id,department_id,SET NULL,NO ACTION
+27,27,27,28,many-to-one,invoice_id,invoice_id,NO ACTION,CASCADE
+28,28,28,29,many-to-many,supplier_id,supplier_id,CASCADE,RESTRICT
+29,29,29,30,one-to-one,branch_id,branch_id,RESTRICT,SET NULL
+30,30,30,31,one-to-many,user_id,user_id,SET NULL,NO ACTION
+31,31,31,32,many-to-one,product_id,product_id,NO ACTION,CASCADE
+32,32,32,33,many-to-many,order_id,order_id,CASCADE,RESTRICT
+33,33,33,34,one-to-one,customer_id,customer_id,RESTRICT,SET NULL
+34,34,34,35,one-to-many,category_id,category_id,SET NULL,NO ACTION
+35,35,35,36,many-to-one,employee_id,employee_id,NO ACTION,CASCADE
+36,36,36,37,many-to-many,department_id,department_id,CASCADE,RESTRICT
+37,37,37,38,one-to-one,invoice_id,invoice_id,RESTRICT,SET NULL
+38,38,38,39,one-to-many,supplier_id,supplier_id,SET NULL,NO ACTION
+39,39,39,40,many-to-one,branch_id,branch_id,NO ACTION,CASCADE
+40,40,40,41,many-to-many,user_id,user_id,CASCADE,RESTRICT
+41,41,41,42,one-to-one,product_id,product_id,RESTRICT,SET NULL
+42,42,42,43,one-to-many,order_id,order_id,SET NULL,NO ACTION
+43,43,43,44,many-to-one,customer_id,customer_id,NO ACTION,CASCADE
+44,44,44,45,many-to-many,category_id,category_id,CASCADE,RESTRICT
+45,45,45,46,one-to-one,employee_id,employee_id,RESTRICT,SET NULL
+46,46,46,47,one-to-many,department_id,department_id,SET NULL,NO ACTION
+47,47,47,48,many-to-one,invoice_id,invoice_id,NO ACTION,CASCADE
+48,48,48,49,many-to-many,supplier_id,supplier_id,CASCADE,RESTRICT
+49,49,49,50,one-to-one,branch_id,branch_id,RESTRICT,SET NULL
+50,50,50,51,one-to-many,user_id,user_id,SET NULL,NO ACTION
+51,51,51,52,many-to-one,product_id,product_id,NO ACTION,CASCADE
+52,52,52,53,many-to-many,order_id,order_id,CASCADE,RESTRICT
+53,53,53,54,one-to-one,customer_id,customer_id,RESTRICT,SET NULL
+54,54,54,55,one-to-many,category_id,category_id,SET NULL,NO ACTION
+55,55,55,56,many-to-one,employee_id,employee_id,NO ACTION,CASCADE
+56,56,56,57,many-to-many,department_id,department_id,CASCADE,RESTRICT
+57,57,57,58,one-to-one,invoice_id,invoice_id,RESTRICT,SET NULL
+58,58,58,59,one-to-many,supplier_id,supplier_id,SET NULL,NO ACTION
+59,59,59,60,many-to-one,branch_id,branch_id,NO ACTION,CASCADE
+60,60,60,61,many-to-many,user_id,user_id,CASCADE,RESTRICT
+61,61,61,62,one-to-one,product_id,product_id,RESTRICT,SET NULL
+62,62,62,63,one-to-many,order_id,order_id,SET NULL,NO ACTION
+63,63,63,64,many-to-one,customer_id,customer_id,NO ACTION,CASCADE
+64,64,64,65,many-to-many,category_id,category_id,CASCADE,RESTRICT
+65,65,65,66,one-to-one,employee_id,employee_id,RESTRICT,SET NULL
+66,66,66,67,one-to-many,department_id,department_id,SET NULL,NO ACTION
+67,67,67,68,many-to-one,invoice_id,invoice_id,NO ACTION,CASCADE
+68,68,68,69,many-to-many,supplier_id,supplier_id,CASCADE,RESTRICT
+69,69,69,70,one-to-one,branch_id,branch_id,RESTRICT,SET NULL
+70,70,70,71,one-to-many,user_id,user_id,SET NULL,NO ACTION

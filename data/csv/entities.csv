@@ -1,0 +1,91 @@
+entity_id,schema_id,entity_name,description,estimated_row_count
+1,1,User,Contains product catalog details,57
+2,2,Product,Records customer purchase orders,64
+3,3,Order,Holds customer profile data,71
+4,4,Customer,Manages employee records,78
+5,5,Employee,Organizes company departments,85
+6,6,Department,Groups products or content,92
+7,7,Category,Tracks billing invoices,99
+8,8,Invoice,Records financial transactions,106
+9,9,Payment,Manages shipping logistics,113
+10,10,Shipment,Stores user account information,120
+11,11,Review,Contains product catalog details,127
+12,12,Address,Records customer purchase orders,134
+13,13,Supplier,Holds customer profile data,141
+14,14,Warehouse,Manages employee records,148
+15,15,Branch,Organizes company departments,155
+16,16,Ticket,Groups products or content,162
+17,17,Booking,Tracks billing invoices,169
+18,18,Course,Records financial transactions,176
+19,19,Student,Manages shipping logistics,183
+20,20,Instructor,Stores user account information,190
+21,21,User,Contains product catalog details,197
+22,22,Product,Records customer purchase orders,204
+23,23,Order,Holds customer profile data,211
+24,24,Customer,Manages employee records,218
+25,25,Employee,Organizes company departments,225
+26,26,Department,Groups products or content,232
+27,27,Category,Tracks billing invoices,239
+28,28,Invoice,Records financial transactions,246
+29,29,Payment,Manages shipping logistics,253
+30,30,Shipment,Stores user account information,260
+31,31,Review,Contains product catalog details,267
+32,32,Address,Records customer purchase orders,274
+33,33,Supplier,Holds customer profile data,281
+34,34,Warehouse,Manages employee records,288
+35,35,Branch,Organizes company departments,295
+36,36,Ticket,Groups products or content,302
+37,37,Booking,Tracks billing invoices,309
+38,38,Course,Records financial transactions,316
+39,39,Student,Manages shipping logistics,323
+40,40,Instructor,Stores user account information,330
+41,41,User,Contains product catalog details,337
+42,42,Product,Records customer purchase orders,344
+43,43,Order,Holds customer profile data,351
+44,44,Customer,Manages employee records,358
+45,45,Employee,Organizes company departments,365
+46,46,Department,Groups products or content,372
+47,47,Category,Tracks billing invoices,379
+48,48,Invoice,Records financial transactions,386
+49,49,Payment,Manages shipping logistics,393
+50,50,Shipment,Stores user account information,400
+51,51,Review,Contains product catalog details,407
+52,52,Address,Records customer purchase orders,414
+53,53,Supplier,Holds customer profile data,421
+54,54,Warehouse,Manages employee records,428
+55,55,Branch,Organizes company departments,435
+56,56,Ticket,Groups products or content,442
+57,57,Booking,Tracks billing invoices,449
+58,58,Course,Records financial transactions,456
+59,59,Student,Manages shipping logistics,463
+60,60,Instructor,Stores user account information,470
+61,61,User,Contains product catalog details,477
+62,62,Product,Records customer purchase orders,484
+63,63,Order,Holds customer profile data,491
+64,64,Customer,Manages employee records,498
+65,65,Employee,Organizes company departments,505
+66,66,Department,Groups products or content,512
+67,67,Category,Tracks billing invoices,519
+68,68,Invoice,Records financial transactions,526
+69,69,Payment,Manages shipping logistics,533
+70,70,Shipment,Stores user account information,540
+71,71,Review,Contains product catalog details,547
+72,72,Address,Records customer purchase orders,554
+73,73,Supplier,Holds customer profile data,561
+74,74,Warehouse,Manages employee records,568
+75,75,Branch,Organizes company departments,575
+76,1,Ticket,Groups products or content,582
+77,2,Booking,Tracks billing invoices,589
+78,3,Course,Records financial transactions,596
+79,4,Student,Manages shipping logistics,603
+80,5,Instructor,Stores user account information,610
+81,6,User,Contains product catalog details,617
+82,7,Product,Records customer purchase orders,624
+83,8,Order,Holds customer profile data,631
+84,9,Customer,Manages employee records,638
+85,10,Employee,Organizes company departments,645
+86,11,Department,Groups products or content,652
+87,12,Category,Tracks billing invoices,659
+88,13,Invoice,Records financial transactions,666
+89,14,Payment,Manages shipping logistics,673
+90,15,Shipment,Stores user account information,680
