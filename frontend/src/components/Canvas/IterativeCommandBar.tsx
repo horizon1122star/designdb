@@ -16,7 +16,7 @@ export function IterativeCommandBar({ onSubmit, isGenerating }: Props) {
   };
 
   return (
-    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50 transition-all duration-300">
+    <div className="absolute bottom-24 left-1/2 -translate-x-1/2 w-full max-w-2xl z-50 transition-all duration-300">
       <div 
         className="glass-panel p-2 rounded-2xl flex items-center gap-3 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-all"
         style={{

@@ -13,12 +13,20 @@ import {
 
 import { useRef, useState } from "react";
 
+export interface DockItem {
+  title: string;
+  icon: React.ReactNode;
+  href: string;
+  onClick?: () => void;
+  isActive?: boolean;
+}
+
 export const FloatingDock = ({
   items,
   desktopClassName,
   mobileClassName,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: DockItem[];
   desktopClassName?: string;
   mobileClassName?: string;
 }) => {
@@ -34,7 +42,7 @@ const FloatingDockMobile = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: DockItem[];
   className?: string;
 }) => {
   const [open, setOpen] = useState(false);
@@ -63,13 +71,18 @@ const FloatingDockMobile = ({
                 }}
                 transition={{ delay: (items.length - 1 - idx) * 0.05 }}
               >
-                <a
-                  href={item.href}
-                  key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5"
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    item.onClick?.();
+                  }}
+                  className={cn(
+                    "flex h-10 w-10 items-center justify-center rounded-full",
+                    item.isActive ? "bg-lime-green/20" : "bg-white/5"
+                  )}
                 >
                   <div className="h-4 w-4">{item.icon}</div>
-                </a>
+                </button>
               </motion.div>
             ))}
           </motion.div>
@@ -89,7 +102,7 @@ const FloatingDockDesktop = ({
   items,
   className,
 }: {
-  items: { title: string; icon: React.ReactNode; href: string }[];
+  items: DockItem[];
   className?: string;
 }) => {
   let mouseY = useMotionValue(Infinity);
@@ -114,11 +127,15 @@ function IconContainer({
   title,
   icon,
   href,
+  onClick,
+  isActive,
 }: {
   mouseY: MotionValue;
   title: string;
   icon: React.ReactNode;
   href: string;
+  onClick?: () => void;
+  isActive?: boolean;
 }) {
   let ref = useRef<HTMLDivElement>(null);
 
@@ -157,14 +174,26 @@ function IconContainer({
 
   const [hovered, setHovered] = useState(false);
 
+  const handleClick = (e: React.MouseEvent) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
   return (
-    <a href={href}>
+    <a href={onClick ? undefined : href} onClick={handleClick} className="cursor-pointer">
       <motion.div
         ref={ref}
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full bg-lime-green/10 text-lime-green border-none hover:bg-lime-green/20 transition-colors"
+        className={cn(
+          "relative flex aspect-square items-center justify-center rounded-full border-none transition-colors",
+          isActive
+            ? "bg-lime-green/25 ring-1 ring-lime-green/40"
+            : "bg-lime-green/10 hover:bg-lime-green/20"
+        )}
       >
         <AnimatePresence>
           {hovered && (
@@ -180,7 +209,10 @@ function IconContainer({
         </AnimatePresence>
         <motion.div
           style={{ width: widthIcon, height: heightIcon }}
-          className="flex items-center justify-center text-lime-green drop-shadow-[0_0_8px_rgba(194,239,78,0.4)]"
+          className={cn(
+            "flex items-center justify-center drop-shadow-[0_0_8px_rgba(194,239,78,0.4)]",
+            isActive ? "text-lime-green" : "text-lime-green"
+          )}
         >
           {icon}
         </motion.div>

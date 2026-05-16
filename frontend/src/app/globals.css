@@ -118,3 +118,50 @@
     stroke-dashoffset: 0;
   }
 }
+
+/* Animated dotted grid background for Canvas */
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: 0.12; }
+}
+
+@keyframes dotDrift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(24px, 24px); }
+}
+
+.animated-dot-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.animated-dot-grid::before,
+.animated-dot-grid::after {
+  content: '';
+  position: absolute;
+  inset: -48px;
+  background-image: radial-gradient(circle, rgba(194, 239, 78, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.animated-dot-grid::before {
+  animation: dotDrift 8s linear infinite, dotPulse 4s ease-in-out infinite;
+}
+
+.animated-dot-grid::after {
+  background-image: radial-gradient(circle, rgba(106, 95, 193, 0.10) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: dotDrift 16s linear infinite reverse, dotPulse 6s ease-in-out infinite 2s;
+}
+
+/* Subtle vignette overlay for depth */
+.canvas-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(5, 11, 20, 0.5) 100%);
+}
