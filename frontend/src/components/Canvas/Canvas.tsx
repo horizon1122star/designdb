@@ -27,6 +27,9 @@ import { CrowsFootEdge } from "./Edges/CrowsFootEdge";
 import { HoverProvider } from "./HoverContext";
 import { FloatingDock } from "../ui/floating-dock";
 import { IterativeCommandBar } from "./IterativeCommandBar";
+import { BottomPanel } from "./BottomPanel";
+import { DataTypesPanel } from "./DataTypesPanel";
+import { CursorDotGrid } from "./CursorDotGrid";
 import { Database, LayoutTemplate, Cable, ArrowLeftRight, Component, Loader2 } from "lucide-react";
 
 const nodeTypes = {
@@ -38,25 +41,17 @@ const edgeTypes = {
   crowsFoot: CrowsFootEdge,
 };
 
-const dockItems = [
-  { title: "Components", href: "#", icon: <Component size={20} /> },
-  { title: "Layouts", href: "#", icon: <LayoutTemplate size={20} /> },
-  { title: "Data Types", href: "#", icon: <Database size={20} /> },
-  { title: "Relationships", href: "#", icon: <Cable size={20} /> },
-  { title: "Mappings", href: "#", icon: <ArrowLeftRight size={20} /> }
-];
+// dockItems moved inside component to access state
 
 // --- DAGRE LAYOUT ENGINE ---
-// LR = Left to Right (Horizontal Hierarchy)
 const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'LR') => {
   const dagreGraph = new dagre.graphlib.Graph();
   dagreGraph.setDefaultEdgeLabel(() => ({}));
   
-  // nodesep = vertical gap between nodes, ranksep = horizontal gap between tiers
-  dagreGraph.setGraph({ rankdir: direction, nodesep: 80, ranksep: 350, align: 'UL' });
+  const isHorizontal = direction === 'LR' || direction === 'RL';
+  dagreGraph.setGraph({ rankdir: direction, nodesep: 80, ranksep: isHorizontal ? 350 : 200, align: 'UL' });
 
   nodes.forEach((node) => {
-    // Dynamically calculate node height based on the number of column relationships it has
     const attrsCount = node.data?.attributes ? (node.data.attributes as any[]).length : 0;
     const nodeHeight = 60 + (attrsCount * 36); 
     dagreGraph.setNode(node.id, { width: 340, height: nodeHeight });
@@ -72,10 +67,10 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[], direction = 'LR') => 
     const nodeWithPosition = dagreGraph.node(node.id);
     return {
       ...node,
-      targetPosition: Position.Left,
-      sourcePosition: Position.Right,
+      targetPosition: isHorizontal ? Position.Left : Position.Top,
+      sourcePosition: isHorizontal ? Position.Right : Position.Bottom,
       position: {
-        x: nodeWithPosition.x - 340 / 2, // Centered
+        x: nodeWithPosition.x - 340 / 2,
         y: nodeWithPosition.y - nodeWithPosition.height / 2,
       },
     };
@@ -88,6 +83,7 @@ export function Canvas() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [generatedSql, setGeneratedSql] = useState<string>("");
+  const [generatedMermaid, setGeneratedMermaid] = useState<string>("");
   
   // Progress & Sync states
   const [isGenerating, setIsGenerating] = useState(false);
@@ -100,7 +96,57 @@ export function Canvas() {
   const [rfInstance, setRfInstance] = useState<ReactFlowInstance | null>(null);
   const hasFetched = useRef(false);
 
+  // Dock toggle states
+  const [showSidebar, setShowSidebar] = useState(true);
+  const [showBottomPanel, setShowBottomPanel] = useState(false);
+  const [showDataTypes, setShowDataTypes] = useState(false);
+  const [layoutDirection, setLayoutDirection] = useState<'LR' | 'TB'>('LR');
+  const [edgeStyle, setEdgeStyle] = useState<'crowsFoot' | 'pulseMode'>('crowsFoot');
+  const [isSqlOpen, setIsSqlOpen] = useState(false);
+  const [isReviewsOpen, setIsReviewsOpen] = useState(false);
+
+  // Sidebar state
+  const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+  const [showGrid, setShowGrid] = useState(true);
+
+  const handleAutoLayout = useCallback(() => {
+    if (nodes.length > 0) {
+      const layouted = getLayoutedElements(nodes, edges, layoutDirection);
+      setNodes(layouted.nodes);
+      setEdges(layouted.edges);
+      if (rfInstance) setTimeout(() => rfInstance.fitView({ duration: 800, padding: 0.1 }), 200);
+    }
+  }, [nodes, edges, layoutDirection, rfInstance, setNodes, setEdges]);
+
   const onConnect = useCallback((params: Edge | Connection) => setEdges((eds) => addEdge(params, eds)), [setEdges]);
+
+  // --- DOCK HANDLERS ---
+  const handleLayoutToggle = useCallback(() => {
+    const newDir = layoutDirection === 'LR' ? 'TB' : 'LR';
+    setLayoutDirection(newDir);
+    if (nodes.length > 0) {
+      const layouted = getLayoutedElements(nodes, edges, newDir);
+      setNodes(layouted.nodes);
+      setEdges(layouted.edges);
+      if (rfInstance) {
+        setTimeout(() => rfInstance.fitView({ duration: 800, padding: 0.1 }), 200);
+      }
+    }
+  }, [layoutDirection, nodes, edges, rfInstance, setNodes, setEdges]);
+
+  const handleEdgeToggle = useCallback(() => {
+    const newStyle = edgeStyle === 'crowsFoot' ? 'pulseMode' : 'crowsFoot';
+    setEdgeStyle(newStyle);
+    setEdges(eds => eds.map(e => ({ ...e, type: newStyle })));
+  }, [edgeStyle, setEdges]);
+
+  const dockItems = [
+    { title: "Components",    href: "#", icon: <Component size={20} />,      onClick: () => setShowSidebar(p => !p),     isActive: showSidebar },
+    { title: "Layouts",       href: "#", icon: <LayoutTemplate size={20} />,  onClick: handleLayoutToggle,                isActive: layoutDirection === 'TB' },
+    { title: "Data Types",    href: "#", icon: <Database size={20} />,        onClick: () => setShowDataTypes(p => !p),    isActive: showDataTypes },
+    { title: "Relationships", href: "#", icon: <Cable size={20} />,           onClick: handleEdgeToggle,                  isActive: edgeStyle === 'pulseMode' },
+    { title: "Mappings",      href: "#", icon: <ArrowLeftRight size={20} />,  onClick: () => setShowBottomPanel(p => !p),  isActive: showBottomPanel },
+  ];
 
   useEffect(() => {
     if (hasFetched.current) return;
@@ -147,6 +193,7 @@ export function Canvas() {
       
       const data = await response.json();
       setGeneratedSql(data.sql); // Silently kept for quick export
+      setGeneratedMermaid(data.mermaid || ""); // Keep mermaid for export
       setRawSchemaContext(data.schema); // Save real context for next iteration
       setGenerationProgress(50); // API is complete, start rendering graph
 
@@ -254,15 +301,12 @@ export function Canvas() {
 
   const showProgressOverlay = isGenerating || isStaggering;
 
-  // Ref to the ReactFlow wrapper div — used by FloatingHeader for PNG export
-  const reactFlowWrapperRef = useRef<HTMLDivElement>(null);
-
   return (
     <div className="w-full h-full flex flex-col relative text-sm">
       <FloatingHeader
         generatedSql={generatedSql}
-        rawSchema={rawSchemaContext}
-        reactFlowWrapperRef={reactFlowWrapperRef}
+        generatedMermaid={generatedMermaid}
+        rfInstance={rfInstance}
       />
 
       {/* SVG Definitions for Crow's Foot Markers */}
@@ -279,8 +323,12 @@ export function Canvas() {
       
       <div className="flex-1 w-full relative overflow-hidden">
         <HoverProvider>
-          {/* Wrapper div is the PNG capture target */}
-          <div className="absolute inset-0 z-0" ref={reactFlowWrapperRef}>
+          <div className="absolute inset-0 z-0">
+            {/* Animated dotted grid background */}
+            <div className="animated-dot-grid" />
+            <div className="canvas-vignette" />
+            <CursorDotGrid />
+            
             <ReactFlow
               nodes={nodes}
               edges={edges}
@@ -290,9 +338,11 @@ export function Canvas() {
               nodeTypes={nodeTypes}
               edgeTypes={edgeTypes}
               onInit={setRfInstance}
+              onNodeClick={(_event, node) => setSelectedNodeId(node.id)}
+              onPaneClick={() => setSelectedNodeId(null)}
               colorMode="dark"
             >
-              <Background gap={24} size={1} variant={BackgroundVariant.Dots} color="rgba(255, 255, 255, 0.05)" />
+              {showGrid && <Background gap={24} size={1.2} variant={BackgroundVariant.Dots} color="rgba(255, 255, 255, 0.08)" />}
               
               {showProgressOverlay && (
                 <Panel position="top-center" className="mt-20">
@@ -319,9 +369,9 @@ export function Canvas() {
 
               {/* Left Side Floating Dock Panel */}
               <Panel 
-                position="bottom-left" 
+                position="top-left" 
                 className="flex flex-col items-center gap-6 pointer-events-none transition-all duration-300 ease-in-out !m-0"
-                style={{ bottom: "calc(0rem + 24px)", left: "24px" }}
+                style={{ top: "40%", transform: "translateY(-50%)", left: "24px" }}
               >
                 <div className="pointer-events-auto shadow-ambient rounded-2xl bg-[#090C15]/50 border-white/5 pb-2 mb-2">
                   <FloatingDock items={dockItems} />
@@ -330,9 +380,9 @@ export function Canvas() {
 
               {/* Right Side Controls Panel */}
               <Panel
-                position="bottom-right"
+                position="top-right"
                 className="pointer-events-none transition-all duration-300 ease-in-out !m-0"
-                style={{ bottom: "calc(0rem + 24px)", right: "320px" }}
+                style={{ top: "50%", transform: "translateY(-50%)", right: showSidebar ? "320px" : "24px" }}
               >
                 <div className="pointer-events-auto">
                   <Controls 
@@ -350,7 +400,33 @@ export function Canvas() {
            isGenerating={showProgressOverlay} 
         />
         
-        <RightSidebar />
+        {showSidebar && (
+          <RightSidebar
+            nodes={nodes}
+            setNodes={setNodes}
+            edges={edges}
+            setEdges={setEdges}
+            selectedNodeId={selectedNodeId}
+            showGrid={showGrid}
+            setShowGrid={setShowGrid}
+            onAutoLayout={handleAutoLayout}
+          />
+        )}
+
+        {showBottomPanel && (
+          <BottomPanel
+            isSqlOpen={isSqlOpen}
+            setIsSqlOpen={setIsSqlOpen}
+            isReviewsOpen={isReviewsOpen}
+            setIsReviewsOpen={setIsReviewsOpen}
+            sql={generatedSql}
+            showSidebar={showSidebar}
+          />
+        )}
+
+        {showDataTypes && (
+          <DataTypesPanel onClose={() => setShowDataTypes(false)} />
+        )}
       </div>
     </div>
   );

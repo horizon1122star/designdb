@@ -14,7 +14,15 @@ export function TableNode(props: NodeProps) {
   const isTargetNode = activeHover?.targetNodeId === id;
   
   return (
-    <div className={`node-panel w-56 p-3 bg-[#0C1520]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 ${isActive ? 'node-panel-active border-l-2 border-l-[#7eabfc] border-t-transparent border-r-transparent border-b-transparent rounded-l-none' : 'border-transparent'} ${isTargetNode ? 'border-sentry-purple/60 shadow-[0_0_24px_rgba(106,95,193,0.3)]' : ''}`}>
+    <div
+      className={`node-panel w-56 p-3 bg-[#0C1520]/80 shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 ${isActive ? 'node-panel-active border-l-2 border-l-[#7eabfc] border-t-transparent border-r-transparent border-b-transparent rounded-l-none' : 'border-transparent'} ${isTargetNode ? 'border-sentry-purple/60 shadow-[0_0_24px_rgba(106,95,193,0.3)]' : ''}`}
+      style={{
+        borderTopColor: 'var(--theme-color, #C2EF4E)',
+        borderTopWidth: '2px',
+        fontFamily: 'var(--node-font, Vagnola, sans-serif)',
+        opacity: 'var(--node-opacity, 1)' as any,
+      }}
+    >
       
       {/* Node Header */}
       <div className="flex items-center justify-between mb-3 border-b border-white/5 pb-2 px-1">

@@ -10,13 +10,13 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "5.22.0",
     "@tabler/icons-react": "^3.41.1",
     "@xyflow/react": "^12.10.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dagre": "^0.8.5",
     "groq-sdk": "^1.1.2",
-    "html-to-image": "^1.11.13",
     "lucide-react": "^1.8.0",
     "motion": "^12.38.0",
     "next": "14.2.35",
@@ -39,6 +39,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",
+    "prisma": "5.22.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

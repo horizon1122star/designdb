@@ -6,13 +6,14 @@ interface BottomPanelProps {
   isReviewsOpen: boolean;
   setIsReviewsOpen: (open: boolean) => void;
   sql?: string;
+  showSidebar: boolean;
 }
 
-export function BottomPanel({ isSqlOpen, setIsSqlOpen, isReviewsOpen, setIsReviewsOpen, sql }: BottomPanelProps) {
+export function BottomPanel({ isSqlOpen, setIsSqlOpen, isReviewsOpen, setIsReviewsOpen, sql, showSidebar }: BottomPanelProps) {
   const displaySql = sql || `-- Synthesizing architecture...\n-- Please wait a moment while DesignDB generates your schema.`;
 
   return (
-    <div className="absolute bottom-6 left-6 right-[300px] z-40 flex gap-4 pointer-events-none items-end">
+    <div className={`absolute bottom-6 left-6 z-40 flex gap-4 pointer-events-none items-end transition-all duration-300 ${showSidebar ? 'right-[300px]' : 'right-[24px]'}`}>
       
       {/* SQL Code Pane */}
       <div 
